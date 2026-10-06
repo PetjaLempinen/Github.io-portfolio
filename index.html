@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petja Lempinen Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif'],
+                        mono: ['Courier New', 'Courier', 'monospace']
+                    },
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: 'rgba(17, 24, 39, 0.7)',
+                        accentCyan: '#06b6d4',
+                        accentBlue: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .light body {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-darkBg/80 light:bg-slate-50/80 border-b border-slate-800 light:border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-cyan-500/20">
+                    AM
+                </div>
+                <span class="font-bold text-lg tracking-tight">Petja Lempinen</span>
+            </a>
+
+            <div class="flex items-center gap-8">
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300 light:text-slate-600">
+                    <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                    <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+                </nav>
+
+                <div class="flex items-center gap-4 pl-4 border-l border-slate-800 light:border-slate-200">
+                    <!-- GitHub Logo -->
+                    <a href="https://github.com/PetjaLempinen" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-slate-400 hover:text-cyan-400 transition-colors">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    </a>
+                    <!-- LinkedIn Logo -->
+                    <a href="https://www.linkedin.com/in/petja-lempinen-905314355/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-slate-400 hover:text-cyan-400 transition-colors">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg border border-slate-700 light:border-slate-300 hover:border-cyan-500 text-slate-300 light:text-slate-700 transition-colors">
+                        <svg id="icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section with Avatar -->
+        <section id="home" class="py-20 lg:py-32 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wide uppercase">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Student
+                        </div>
+                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                            Petja Lempinen. <br>
+                            <span class="gradient-text">ICT-Engineering student</span>
+                        </h1>
+                        <p class="text-slate-400 light:text-slate-600 text-lg max-w-xl leading-relaxed">
+                            My name is Petja Lempinen and I'm a 3rd-year ICT-Engineering student at Turku University of Applied Sciences, specializing in Data- and AI-Engineering.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="#projects" class="px-7 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-cyan-500/25 transition-all">
+                                View Projects
+                            </a>
+                            <a href="#contact" class="px-7 py-3.5 glass-card hover:border-cyan-500 font-semibold rounded-xl transition-all">
+                                Contact Me
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative">
+                            <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur-lg opacity-40"></div>
+                            <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-2 border-slate-700 light:border-slate-300 glass-card flex items-center justify-center bg-slate-800/50">
+                                <!-- Professional Avatar Placeholder -->
+                                <img src="https://placehold.co/400x400/0f172a/06b6d4?text=Alex+Morgan" alt="Alex Morgan Avatar" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- About & Interests Section -->
+        <section id="about" class="py-24 border-t border-slate-800/60 light:border-slate-200 bg-slate-900/30 light:bg-slate-100/50">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold">Technical Skills & About Me</h2>
+                    <p class="text-slate-400 light:text-slate-600 text-sm">Languages, frameworks, platforms and background.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Technical Skills Box -->
+                    <div class="glass-card p-8 rounded-2xl space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <h3 class="text-xl font-bold">Languages & Technologies</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Languages</span>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Python</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">C++</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">SQL</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Matlab</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Frameworks & Libraries</span>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Pandas</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Numpy</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Scikit-Learn</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">FastAPI / Flask</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Streamlit</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tools & Platforms</span>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Git & GitHub</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">PostgreSQL / MySQL</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">AWS applications</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Apache Airflow</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Docker</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Jupyter Notebook</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Box -->
+                    <div class="glass-card p-8 rounded-2xl space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <h3 class="text-xl font-bold">Interests & Education</h3>
+                        </div>
+
+                        <div class="space-y-6 border-l border-slate-700/50 pl-4 ml-2">
+                            <div class="relative space-y-1">
+                                <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-600"></div>
+                                <span class="text-xs text-slate-400 font-semibold">Interests</span>
+                                <h4 class="text-base font-bold">Cloud platforms</h4>
+                                <p class="text-slate-400 light:text-slate-600 text-xs leading-relaxed">
+                                    I'm really interested in how cloud infrastructure works under the hood and how to use it for data and backend apps. I've completed AWS courses/certifications for Cloud Foundations and Data Engineering,
+                                     and I find the rapid growth of AI capabilities within cloud platforms especially interesting.
+                                </p>
+                                <h4 class="text-base font-bold">Hobbies</h4>
+                                <p class="text-slate-400 light:text-slate-600 text-xs leading-relaxed">
+                                   I've played ice hockey for 15 years and still enjoy watching sports. I also like playing chess, solving LeetCode problems, building helpful projects for day-to-day life,
+                                    and keeping up with world financial news and market trends for extra buck.
+                                </p>
+                            </div>
+
+                            <div class="relative space-y-1">
+                                <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-600"></div>
+                                <span class="text-xs text-slate-400 font-semibold">Education</span>
+                                <h4 class="text-base font-bold">Bachelor of Engineering 2024-2028</h4>
+                                <p class="text-slate-400 light:text-slate-600 text-xs leading-relaxed">
+                                    ICT-Engineering, specialized in Data- and AI Engineering at Turku University of Applied Sciences.
+                                </p>
+                                <h4 class="text-base font-bold">High School Diploma 2020-2023</h4>
+                                <p class="text-slate-400 light:text-slate-600 text-xs leading-relaxed">
+                                    Lahden Lyseo, specialized sports program.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 border-t border-slate-800/60 light:border-slate-200">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold">Projects</h2>
+                    </div>
+                </div>
+
+                <!-- Dynamic Projects Grid -->
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Populated via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 border-t border-slate-800/60 light:border-slate-200 bg-slate-900/30 light:bg-slate-100/50">
+            <div class="max-w-3xl mx-auto px-6 text-center space-y-8">
+                <h2 class="text-3xl sm:text-5xl font-bold">Contact Me</h2>
+                <p class="text-slate-400 light:text-slate-600 max-w-lg mx-auto text-sm leading-relaxed">
+                    I'm currently full-time student, open for work. Feel free to reach out.
+                </p>
+                <div>
+                    <a href="mailto:alex.morgan.dev@example.com" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-cyan-500/25 transition-all">
+                        <i data-lucide="mail" class="w-5 h-5"></i> petja.lemp@gmail.com
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-800/60 light:border-slate-200 py-10">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>&copy; 2026 Petja Lempinen. Built for GitHub Pages.</p>
+            <a href="#home" class="hover:text-cyan-400 transition-colors">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <script>
+        const projectsData = [
+            {
+                title: "Database project for budgeting",
+                description: "Database project that taught me how to design and construct a database",
+                tags: ["MySQL", "LAMP stack UwAmp", "Schema tools"],
+                githubUrl: "https://github.com/PetjaLempinen/Own_Database_Project",
+                image: "images/Database_schema.png"
+            },
+            {
+                title: "Stock data ETL pipeline simulation",
+                description: "This project demonstrates how to extract structured financial data, inject realistic inconsistencies and missing values, and transform it into a clean, SQL-ready format.",
+                tags: ["Python", "Pandas", "Matplotlib", "Numpy", "MySQL", "Jupyter NB"],
+                githubUrl: "https://github.com/PetjaLempinen/Stock_Data_ETL_Pipeline_Simulation",
+                image: "images/kuvaajat.png"
+            }
+        ];
+
+        function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = projectsData.map((project, idx) => `
+                <div class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-slate-800/80 light:border-slate-200">
+                    
+                    <!-- Clickable Project Image Section -->
+                    <a href="${project.image}" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 light:border-slate-200 cursor-zoom-in" title="Click to view full image">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </a>
+
+                    <!-- Project Content Section -->
+                    <div class="p-8 flex flex-col justify-between flex-grow space-y-6">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
+                                <span>PROJECT 0${idx + 1}</span>
+                                <span class="w-2 h-2 rounded-full bg-cyan-400/50 group-hover:bg-cyan-400 transition-colors"></span>
+                            </div>
+                            <h3 class="text-2xl font-bold group-hover:text-cyan-400 transition-colors">${project.title}</h3>
+                            <p class="text-slate-400 light:text-slate-600 text-sm leading-relaxed">${project.description}</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="flex flex-wrap gap-2">
+                                ${project.tags.map(tag => `<span class="px-3 py-1 rounded-md bg-slate-800/80 light:bg-slate-200 text-xs font-medium text-slate-300 light:text-slate-700">${tag}</span>`).join('')}
+                            </div>
+                            <div class="flex items-center gap-6 pt-4 border-t border-slate-800/60 light:border-slate-200 text-sm font-semibold">
+                                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                                    <i data-lucide="github" class="w-4 h-4"></i> GitHub Repo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const iconSun = document.getElementById('icon-sun');
+        const iconMoon = document.getElementById('icon-moon');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                iconSun.classList.remove('hidden');
+                iconMoon.classList.add('hidden');
+                localStorage.theme = 'light';
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                iconSun.classList.add('hidden');
+                iconMoon.classList.remove('hidden');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
