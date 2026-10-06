@@ -130,7 +130,7 @@
                             <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur-lg opacity-40"></div>
                             <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-2 border-slate-700 light:border-slate-300 glass-card flex items-center justify-center bg-slate-800/50">
                                 <!-- Professional Avatar Placeholder -->
-                                <img src="https://placehold.co/400x400/0f172a/06b6d4?text=Alex+Morgan" alt="Alex Morgan Avatar" class="w-full h-full object-cover">
+                                <img src="images/photo.jpg" alt="Alex Morgan Avatar" class="w-full h-full object-cover">
                             </div>
                         </div>
                     </div>
@@ -172,6 +172,8 @@
                                     <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Scikit-Learn</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">FastAPI / Flask</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Streamlit</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">CMake</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 light:bg-slate-200 text-xs font-medium text-slate-200 light:text-slate-700">Tkinter</span>
                                 </div>
                             </div>
 
@@ -338,6 +340,13 @@
     <script>
         const projectsData = [
             {
+                title: "High performance python extension made in c++",
+                description: "A high-performance computational extension that bridges the gap between C++ and Python. This project demonstrates how to bypass Python performance bottlenecks by offloading heavy data processing logic into native C++ modules using pybind11. This project uses a A* pathfinder algorithm as a good example, due to its slowness in python.",
+                tags: ["Python", "C++", "CMake", "pybind11"],
+                githubUrl: "https://github.com/PetjaLempinen/High-performance-python-extension/tree/main",
+                image: "images/Astar_pathfinder.png"
+            },
+            {
                 title: "Database project for budgeting",
                 description: "Database project that taught me how to design and construct a database",
                 tags: ["MySQL", "LAMP stack UwAmp", "Schema tools"],
@@ -351,6 +360,8 @@
                 githubUrl: "https://github.com/PetjaLempinen/Stock_Data_ETL_Pipeline_Simulation",
                 image: "images/kuvaajat.png"
             }
+            
+            
         ];
 
         function renderProjects() {
