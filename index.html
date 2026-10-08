@@ -111,7 +111,7 @@
                             <span class="gradient-text">ICT-Engineering student</span>
                         </h1>
                         <p class="text-slate-300 text-lg max-w-xl leading-relaxed">
-                            My name is Petja Lempinen and I'm a 3rd-year ICT-Engineering student at Turku University of Applied Sciences, specializing in Data- and AI-Engineering.
+                            My name is Petja Lempinen and I'm a 3rd-year ICT-Engineering student at Turku University of Applied Sciences, specializing in Data and AI Engineering.
                         </p>
                         <div class="flex flex-wrap items-center gap-4 pt-2">
                             <a href="#projects" class="px-7 py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/25 transition-all">
@@ -171,6 +171,7 @@
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Streamlit</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">CMake</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Tkinter</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">PySpark</span>
                                 </div>
                             </div>
 
@@ -183,6 +184,9 @@
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Apache Airflow</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Docker</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Jupyter Notebook</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">MinIO</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Linux</span>
+
                                 </div>
                             </div>
                         </div>
@@ -205,8 +209,7 @@
                                 </p>
                                 <h4 class="text-base font-bold text-slate-100 pt-2">Hobbies</h4>
                                 <p class="text-slate-300 text-xs leading-relaxed">
-                                   I've played ice hockey for 15 years and still enjoy watching sports. I also like playing chess, solving LeetCode problems, building helpful projects for day-to-day life,
-                                    and keeping up with world financial news and market trends for extra buck.
+                                   I played ice hockey for 15 years and still love staying active with regular exercise and watching sports. Aside from that, I spend my time solving LeetCode problems and building handy projects for day-to-day life. I also like to follow world financial news and market trends to try and make an extra buck.
                                 </p>
                             </div>
 
@@ -384,8 +387,15 @@
                 title: "Neural network visualizer using numpy",
                 description: "This project includes a full neural network model with using RELU and Sigmoid activation functions. Visualizer shows how the neural network succeeds in prediction. Background colours are the predictions and datapoints are the true values.",
                 tags: ["Python", "Matplotlib", "Numpy"],
-                githubUrl: "https://github.com/PetjaLempinen/Stock_Data_ETL_Pipeline_Simulation",
+                githubUrl: "https://github.com/PetjaLempinen/-Interactive-Neural-Network-Decision-Boundary-Visualizer",
                 image: "images/NNW.png"
+            },
+            {
+                title: "Big Data Engineering school project for NYtaxidata",
+                description: "End-to-end big data pipeline school project built on NYC TLC High Volume For-Hire Vehicle (FHVHV) trip records. The project ingests raw Parquet data, processes it through a Spark medallion architecture, stores every layer in a MinIO S3-compatible data lake, and surfaces analytical results through a FastAPI REST API.",
+                tags: ["Python", "PySpark","Apache Spark", "MinIO", "DuckDB", "FastAPI + Uvicorn", "Docker"],
+                githubUrl: "https://github.com/PetjaLempinen/Big_Data_Engineering_Project",
+                image: "images/BDE.png"
             },
             {
                 title: "Database project for budgeting",
