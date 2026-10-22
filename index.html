@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petja Lempinen Portfolio</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -25,7 +24,6 @@
             }
         }
     </script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
@@ -34,7 +32,6 @@
             color: #f1f5f9;
             overflow-x: hidden;
         }
-        /* Canvas background styling */
         #binary-canvas {
             position: fixed;
             top: 0;
@@ -43,7 +40,7 @@
             height: 100vh;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.18; /* Subtle transparency so it's not distracting */
+            opacity: 0.18;
         }
         .glass-card {
             background: rgba(30, 41, 59, 0.7);
@@ -65,10 +62,8 @@
 </head>
 <body class="selection:bg-sky-500 selection:text-white flex flex-col min-h-screen relative">
 
-    <!-- Animated Binary Background Canvas -->
     <canvas id="binary-canvas"></canvas>
 
-    <!-- Header & Navigation -->
     <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0f19]/90 border-b border-slate-800">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#home" class="flex items-center gap-3 group">
@@ -98,7 +93,6 @@
     </header>
 
     <main class="flex-grow">
-        <!-- Hero Section with Avatar -->
         <section id="home" class="py-20 lg:py-32 relative overflow-hidden">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -126,7 +120,6 @@
                         <div class="relative">
                             <div class="absolute -inset-1.5 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-3xl blur-lg opacity-40"></div>
                             <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-2 border-slate-700 glass-card flex items-center justify-center bg-slate-800/50">
-                                <!-- Professional Avatar Placeholder -->
                                 <img src="images/photo.jpg" alt="Petja Lempinen Avatar" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -135,7 +128,6 @@
             </div>
         </section>
 
-        <!-- About & Interests Section -->
         <section id="about" class="py-24 border-t border-slate-800/60 bg-slate-900/40">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -144,7 +136,6 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <!-- Technical Skills Box -->
                     <div class="glass-card p-8 rounded-2xl space-y-6">
                         <div class="flex items-center space-x-3">
                             <h3 class="text-xl font-bold text-slate-100">Languages & Technologies</h3>
@@ -172,6 +163,7 @@
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">CMake</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Tkinter</span>
                                     <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">PySpark</span>
+                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">PyTorch</span>
                                 </div>
                             </div>
 
@@ -192,7 +184,6 @@
                         </div>
                     </div>
 
-                    <!-- Experience Box -->
                     <div class="glass-card p-8 rounded-2xl space-y-6">
                         <div class="flex items-center space-x-3">
                             <h3 class="text-xl font-bold text-slate-100">Interests & Education</h3>
@@ -239,7 +230,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="py-24 border-t border-slate-800/60">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
@@ -248,14 +238,11 @@
                     </div>
                 </div>
 
-                <!-- Dynamic Projects Grid -->
                 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Populated via JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Certifications Section -->
         <section id="certifications" class="py-20 border-t border-slate-800/60">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -265,7 +252,6 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                     
-                    <!-- AWS Certified Data Engineering -->
                     <div class="glass-card rounded-2xl flex flex-col overflow-hidden border border-slate-800 hover:border-sky-400 transition duration-300 group">
                         <a href="images/AWS_Data.png" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 cursor-zoom-in" title="Click to view full certificate">
                             <img src="images/AWS_Data.png" alt="AWS Certified Data Engineering" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
@@ -281,7 +267,6 @@
                         </div>
                     </div>
 
-                    <!-- AWS Cloud Foundations -->
                     <div class="glass-card rounded-2xl flex flex-col overflow-hidden border border-slate-800 hover:border-sky-400 transition duration-300 group">
                         <a href="images/AWS_Cloud.png" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 cursor-zoom-in" title="Click to view full certificate">
                             <img src="images/AWS_Cloud.png" alt="AWS Cloud Foundations" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
@@ -297,7 +282,6 @@
                         </div>
                     </div>
 
-                    <!-- Matlab OnRamp -->
                     <div class="glass-card rounded-2xl flex flex-col overflow-hidden border border-slate-800 hover:border-sky-400 transition duration-300 group">
                         <a href="images/Matlab.png" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 cursor-zoom-in" title="Click to view full certificate">
                             <img src="images/Matlab.png" alt="Matlab" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
@@ -341,7 +325,6 @@
     </footer>
 
     <script>
-        // Binary Matrix Rain Animation
         const canvas = document.getElementById('binary-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -363,10 +346,10 @@
         });
 
         function drawBinaryRain() {
-            ctx.fillStyle = 'rgba(11, 15, 25, 0.15)'; // Fade effect for trailing characters
+            ctx.fillStyle = 'rgba(11, 15, 25, 0.15)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#38bdf8'; // Sky blue binary tint
+            ctx.fillStyle = '#38bdf8';
             ctx.font = fontSize + 'px Courier New';
 
             for (let i = 0; i < drops.length; i++) {
@@ -382,7 +365,6 @@
 
         setInterval(drawBinaryRain, 50);
 
-        // Projects Data & Rendering
         const projectsData = [
             {
                 title: "High performance python extension made in c++",
@@ -404,6 +386,13 @@
                 tags: ["Python", "PySpark","Apache Spark", "MinIO", "DuckDB", "FastAPI + Uvicorn", "Docker"],
                 githubUrl: "https://github.com/PetjaLempinen/Big_Data_Engineering_Project",
                 image: "images/BDE.png"
+            },
+            {
+                title: "CNN image classifier with webcam integration",
+                description: "Modular deep learning project built with PyTorch that implements a Convolutional Neural Network from scratch to classify the CIFAR-10 dataset. This project includes fully separated components for model architecture, dataset management, training, single-image inference, and real-time webcam classification.",
+                tags: ["Python", "PyTorch", "OpenCV", "Pillow"],
+                githubUrl: "https://github.com/PetjaLempinen/Modular_Image_Classifier",
+                image: "images/CNN_image.png"
             },
             {
                 title: "Database project for budgeting",
