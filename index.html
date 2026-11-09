@@ -1,482 +1,132 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petja Lempinen Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Arial', 'Helvetica', 'sans-serif'],
-                        mono: ['Courier New', 'Courier', 'monospace']
-                    },
-                    colors: {
-                        darkBg: '#0b0f19',
-                        cardBg: 'rgba(30, 41, 59, 0.6)',
-                        accentCyan: '#010511',
-                        accentBlue: '#3b82f6',
-                    }
-                }
-            }
-        }
-    </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #0b0f19;
-            color: #f1f5f9;
-            overflow-x: hidden;
-        }
-        #binary-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.18;
-        }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-card:hover {
-            border-color: rgba(148, 163, 184, 0.4);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+    <meta name="description" content="Petja Lempinen – ICT-Engineering student at Turku University of Applied Sciences, specializing in Data and AI Engineering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="selection:bg-sky-500 selection:text-white flex flex-col min-h-screen relative">
+<body>
 
-    <canvas id="binary-canvas"></canvas>
-
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0f19]/90 border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#home" class="flex items-center gap-3 group">
-                <span class="font-bold text-lg tracking-tight text-slate-100">Petja Lempinen</span>
-            </a>
-
-            <div class="flex items-center gap-8">
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                    <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
-                    <a href="#projects" class="hover:text-sky-400 transition-colors">Projects</a>
-                    <a href="#certifications" class="hover:text-sky-400 transition-colors">Certifications</a>
-                    <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
-                </nav>
-
-                <div class="flex items-center gap-4 pl-4 border-l border-slate-800">
-                    <!-- GitHub Logo -->
-                    <a href="https://github.com/PetjaLempinen" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-slate-400 hover:text-sky-400 transition-colors">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    </a>
-                    <!-- LinkedIn Logo -->
-                    <a href="https://www.linkedin.com/in/petja-lempinen-905314355/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-slate-400 hover:text-sky-400 transition-colors">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                </div>
-            </div>
+    <header class="site-header">
+        <div class="wrap">
+            <a href="#home" class="site-name">Petja Lempinen</a>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+                <span class="sep" aria-hidden="true"></span>
+                <a href="https://github.com/PetjaLempinen" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/petja-lempinen-905314355/?isSelfProfile=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </nav>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <section id="home" class="py-20 lg:py-32 relative overflow-hidden">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-7 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold tracking-wide uppercase">
-                            <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span> Student
-                        </div>
-                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-slate-100">
-                            Petja Lempinen. <br>
-                            <span class="gradient-text">ICT-Engineering student</span>
-                        </h1>
-                        <p class="text-slate-300 text-lg max-w-xl leading-relaxed">
-                            My name is Petja Lempinen and I'm a 3rd-year ICT-Engineering student at Turku University of Applied Sciences, specializing in Data and AI Engineering.
-                        </p>
-                        <div class="flex flex-wrap items-center gap-4 pt-2">
-                            <a href="#projects" class="px-7 py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/25 transition-all">
-                                View Projects
-                            </a>
-                            <a href="#contact" class="px-7 py-3.5 glass-card hover:border-sky-400 font-semibold rounded-xl transition-all text-slate-200">
-                                Contact Me
-                            </a>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative">
-                            <div class="absolute -inset-1.5 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-3xl blur-lg opacity-40"></div>
-                            <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-2 border-slate-700 glass-card flex items-center justify-center bg-slate-800/50">
-                                <img src="images/photo.jpg" alt="Petja Lempinen Avatar" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-24 border-t border-slate-800/60 bg-slate-900/40">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-100">Technical Skills & About Me</h2>
-                    <p class="text-slate-300 text-sm">Languages, frameworks, platforms and background.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="glass-card p-8 rounded-2xl space-y-6">
-                        <div class="flex items-center space-x-3">
-                            <h3 class="text-xl font-bold text-slate-100">Languages & Technologies</h3>
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <div>
-                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Languages</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Python</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">C++</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">SQL</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">MATLAB</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">ML & Data</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">pandas</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">NumPy</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">scikit-learn</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">PyTorch</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">PySpark</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Web & Apps</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">FastAPI</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Flask</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Streamlit</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Tkinter</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Data Engineering & DevOps</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Apache Airflow</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Docker</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Git & GitHub</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">CMake</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Linux</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Databases & Storage</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">PostgreSQL</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">MySQL</span>
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">MinIO</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Cloud</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">AWS</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Environments</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs font-medium text-slate-200">Jupyter</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card p-8 rounded-2xl space-y-6">
-                        <div class="flex items-center space-x-3">
-                            <h3 class="text-xl font-bold text-slate-100">Interests & Education</h3>
-                        </div>
-
-                        <div class="space-y-6 border-l border-slate-700/50 pl-4 ml-2">
-                            <div class="relative space-y-1">
-                                <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-sky-400"></div>
-                                <span class="text-xs text-sky-400 font-semibold">Interests</span>
-
-                                <h4 class="text-base font-bold text-slate-100 pt-2">Hobbies</h4>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                   I played ice hockey for 15 years and still love staying active with regular exercise and watching sports. Aside from that, I spend my time building handy projects for day-to-day life and doing different kinds of problem solving. I also like to follow world financial news and market trends to try and make an extra buck.
-                                </p>
-
-                                <h4 class="text-base font-bold text-slate-100">Cloud platforms</h4>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                    I'm really interested in how cloud infrastructure works under the hood and how to use it for data and backend apps. I've completed AWS courses/certifications for Cloud Foundations and Data Engineering,
-                                     and I find the rapid growth of AI capabilities within cloud platforms especially interesting.
-                                </p>
-                                
-                                <h4 class="text-base font-bold text-slate-100">Machine learning / AI</h4>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                    My interest in machine learning came from building models for different kind of systems. I've been exploring core algorithms and practical data workflows, and I'm especially fascinated by how rapidly AI capabilities are expanding within modern tech industry.
-                                </p>
-                
-                            </div>
-
-                            <div class="relative space-y-1 pt-2">
-                                <div class="absolute -left-[21px] top-3.5 w-2.5 h-2.5 rounded-full bg-sky-400"></div>
-                                <span class="text-xs text-sky-400 font-semibold">Education</span>
-                                <h4 class="text-base font-bold text-slate-100">Bachelor of Engineering 2024-2028</h4>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                    ICT-Engineering, specialized in Data- and AI Engineering at Turku University of Applied Sciences.
-                                </p>
-                                <h4 class="text-base font-bold text-slate-100 pt-2">High School Diploma 2020-2023</h4>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                    Lahden Lyseo, specialized sports program.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="py-24 border-t border-slate-800/60">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
-                    <div>
-                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-100">Projects</h2>
-                    </div>
-                </div>
-
-                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                </div>
-            </div>
-        </section>
-
-        <section id="certifications" class="py-20 border-t border-slate-800/60">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-100">Certifications</h2>
-                    <p class="text-slate-300 text-sm">Professional credentials and validated expertise.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    
-                    <div class="glass-card rounded-2xl flex flex-col overflow-hidden border border-slate-800 hover:border-sky-400 transition duration-300 group">
-                        <a href="images/AWS_Data.png" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 cursor-zoom-in" title="Click to view full certificate">
-                            <img src="images/AWS_Data.png" alt="AWS Certified Data Engineering" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                        </a>
-                        <div class="p-6 space-y-2 flex-grow flex flex-col justify-between">
-                            <div class="space-y-1">
-                                <span class="text-xs font-mono text-sky-400">AWS / Cloud</span>
-                                <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-400 transition-colors">AWS Certified Data Engineering</h3>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                    Validates expertise in building and securing data analytics infrastructure on AWS.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl flex flex-col overflow-hidden border border-slate-800 hover:border-sky-400 transition duration-300 group">
-                        <a href="images/AWS_Cloud.png" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 cursor-zoom-in" title="Click to view full certificate">
-                            <img src="images/AWS_Cloud.png" alt="AWS Cloud Foundations" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                        </a>
-                        <div class="p-6 space-y-2 flex-grow flex flex-col justify-between">
-                            <div class="space-y-1">
-                                <span class="text-xs font-mono text-sky-400">AWS / Cloud</span>
-                                <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-400 transition-colors">AWS Cloud Foundations</h3>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                    Covers foundational cloud concepts, core AWS services, security, architecture, and pricing.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl flex flex-col overflow-hidden border border-slate-800 hover:border-sky-400 transition duration-300 group">
-                        <a href="images/Matlab.png" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 cursor-zoom-in" title="Click to view full certificate">
-                            <img src="images/Matlab.png" alt="Matlab" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                        </a>
-                        <div class="p-6 space-y-2 flex-grow flex flex-col justify-between">
-                            <div class="space-y-1">
-                                <span class="text-xs font-mono text-sky-400">Matlab</span>
-                                <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-400 transition-colors">Matlab OnRamp</h3>
-                                <p class="text-slate-300 text-xs leading-relaxed">
-                                    Covers foundational Matlab basics.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 border-t border-slate-800/60 bg-slate-900/40">
-            <div class="max-w-3xl mx-auto px-6 text-center space-y-8">
-                <h2 class="text-3xl sm:text-5xl font-bold text-slate-100">Contact Me</h2>
-                <p class="text-slate-300 max-w-lg mx-auto text-sm leading-relaxed">
-                    I'm currently full-time student, open for work. Feel free to reach out.
+    <main>
+        <section id="home" class="hero wrap">
+            <div>
+                <p class="label">Student</p>
+                <h1>Petja Lempinen.<br><em>ICT-Engineering student</em></h1>
+                <p class="lead">
+                    My name is Petja Lempinen and I'm a 3rd-year ICT-Engineering student at Turku University of Applied Sciences, specializing in Data and AI Engineering.
                 </p>
-                <div>
-                    <a href="mailto:petja.lemp@gmail.com" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/25 transition-all">
-                        <i data-lucide="mail" class="w-5 h-5"></i> petja.lemp@gmail.com
-                    </a>
+                <p class="actions">
+                    <a href="#projects" class="button">View Projects</a>
+                    <a href="#contact" class="text-link">Contact Me</a>
+                </p>
+            </div>
+            <figure class="hero-photo" style="margin:0">
+                <img src="images/photo.jpg" alt="Petja Lempinen Avatar">
+            </figure>
+        </section>
+
+        <section id="about" class="section">
+            <div class="wrap">
+                <header class="section-head">
+                    <h2>Technical Skills &amp; About Me</h2>
+                    <p>Languages, frameworks, platforms and background.</p>
+                </header>
+
+                <div class="about">
+                    <div>
+                        <h3 class="col-title">Languages &amp; Technologies</h3>
+                        <dl class="skills" id="skills"></dl>
+                    </div>
+
+                    <div>
+                        <h3 class="col-title">Interests &amp; Education</h3>
+
+                        <p class="group-label">Interests</p>
+                        <div class="entry">
+                            <h4>Hobbies</h4>
+                            <p>I played ice hockey for 15 years and still love staying active with regular exercise and watching sports. Aside from that, I spend my time building handy projects for day-to-day life and doing different kinds of problem solving. I also like to follow world financial news and market trends to try and make an extra buck.</p>
+                        </div>
+                        <div class="entry">
+                            <h4>Cloud platforms</h4>
+                            <p>I'm really interested in how cloud infrastructure works under the hood and how to use it for data and backend apps. I've completed AWS courses/certifications for Cloud Foundations and Data Engineering, and I find the rapid growth of AI capabilities within cloud platforms especially interesting.</p>
+                        </div>
+                        <div class="entry">
+                            <h4>Machine learning / AI</h4>
+                            <p>My interest in machine learning came from building models for different kind of systems. I've been exploring core algorithms and practical data workflows, and I'm especially fascinated by how rapidly AI capabilities are expanding within modern tech industry.</p>
+                        </div>
+
+                        <p class="group-label">Education</p>
+                        <div class="entry">
+                            <h4>Bachelor of Engineering 2024-2028</h4>
+                            <p>ICT-Engineering, specialized in Data- and AI Engineering at Turku University of Applied Sciences.</p>
+                        </div>
+                        <div class="entry">
+                            <h4>High School Diploma 2020-2023</h4>
+                            <p>Lahden Lyseo, specialized sports program.</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="wrap">
+                <header class="section-head">
+                    <h2>Projects</h2>
+                </header>
+                <ol class="projects" id="projects-list"></ol>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <div class="wrap">
+                <header class="section-head">
+                    <h2>Certifications</h2>
+                    <p>Professional credentials and validated expertise.</p>
+                </header>
+                <div class="certs" id="certs-list"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="wrap">
+                <header class="section-head" style="margin-bottom:0">
+                    <h2>Contact Me</h2>
+                </header>
+                <p>I'm currently full-time student, open for work. Feel free to reach out.</p>
+                <a href="mailto:petja.lemp@gmail.com" class="email">petja.lemp@gmail.com</a>
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-slate-800/60 py-10">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+    <footer class="site-footer">
+        <div class="wrap">
             <p>&copy; 2026 Petja Lempinen. Built for GitHub Pages.</p>
-            <a href="#home" class="hover:text-sky-400 transition-colors">Back to top ↑</a>
+            <a href="#home">Back to top ↑</a>
         </div>
     </footer>
 
-    <script>
-        const canvas = document.getElementById('binary-canvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const fontSize = 14;
-        let columns = Math.floor(canvas.width / fontSize);
-        let drops = Array(columns).fill(1);
-
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            columns = Math.floor(canvas.width / fontSize);
-            drops = Array(columns).fill(1);
-        });
-
-        function drawBinaryRain() {
-            ctx.fillStyle = 'rgba(11, 15, 25, 0.15)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#38bdf8';
-            ctx.font = fontSize + 'px Courier New';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = Math.random() > 0.5 ? '1' : '0';
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawBinaryRain, 50);
-
-        const projectsData = [
-            {
-                title: "High performance python extension made in c++",
-                description: "A high-performance computational extension that bridges the gap between C++ and Python. This project demonstrates how to bypass Python performance bottlenecks by offloading heavy data processing logic into native C++ modules using pybind11. This project uses a A* pathfinder algorithm as a good example, due to its slowness in python.",
-                tags: ["Python", "C++", "CMake", "pybind11"],
-                githubUrl: "https://github.com/PetjaLempinen/High-performance-python-extension/tree/main",
-                image: "images/Astar_pathfinder.png"
-            },
-            {
-                title: "Neural network visualizer using numpy",
-                description: "This project includes a full neural network model with using RELU and Sigmoid activation functions. Visualizer shows how the neural network succeeds in prediction. Background colours are the predictions and datapoints are the true values.",
-                tags: ["Python", "Matplotlib", "Numpy"],
-                githubUrl: "https://github.com/PetjaLempinen/-Interactive-Neural-Network-Decision-Boundary-Visualizer",
-                image: "images/NNW.png"
-            },
-            {
-                title: "Big Data Engineering school project for NYtaxidata",
-                description: "End-to-end big data pipeline school project built on NYC TLC High Volume For-Hire Vehicle (FHVHV) trip records. The project ingests raw Parquet data, processes it through a Spark medallion architecture, stores every layer in a MinIO S3-compatible data lake, and surfaces analytical results through a FastAPI REST API.",
-                tags: ["Python", "PySpark","Apache Spark", "MinIO", "DuckDB", "FastAPI + Uvicorn", "Docker"],
-                githubUrl: "https://github.com/PetjaLempinen/Big_Data_Engineering_Project",
-                image: "images/BDE.png"
-            },
-            {
-                title: "CNN image classifier with webcam integration",
-                description: "Modular deep learning project built with PyTorch that implements a Convolutional Neural Network from scratch to classify the CIFAR-10 dataset. This project includes fully separated components for model architecture, dataset management, training, single-image inference, and real-time webcam classification.",
-                tags: ["Python", "PyTorch", "OpenCV", "Pillow"],
-                githubUrl: "https://github.com/PetjaLempinen/Modular_Image_Classifier",
-                image: "images/CNN_image.png"
-            },
-            {
-                title: "Database project for budgeting",
-                description: "Local database creation for learning SQL and database design. Includes simulated data for six core tables: User, Category, PaymentMethod, Budget, Income and Expenses. The database is managed through phpMyAdmin, providing a user‑friendly interface for administration and visualization.",
-                tags: ["MySQL", "LAMP stack UwAmp", "Schema tools"],
-                githubUrl: "https://github.com/PetjaLempinen/Own_Database_Project",
-                image: "images/Database_schema.png"
-            },
-            {
-                title: "Stock data ETL pipeline simulation",
-                description: "This project demonstrates how to extract structured financial data, inject realistic inconsistencies and missing values, and transform it into a clean, SQL-ready format.",
-                tags: ["Python", "Pandas", "Matplotlib", "Numpy", "MySQL", "Jupyter NB"],
-                githubUrl: "https://github.com/PetjaLempinen/Stock_Data_ETL_Pipeline_Simulation",
-                image: "images/kuvaajat.png"
-            }
-        ];
-
-        function renderProjects() {
-            const grid = document.getElementById('projects-grid');
-            grid.innerHTML = projectsData.map((project, idx) => `
-                <div class="glass-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-slate-800/80">
-                    <a href="${project.image}" target="_blank" rel="noopener noreferrer" class="block w-full h-48 overflow-hidden bg-slate-900 border-b border-slate-800/80 cursor-zoom-in" title="Click to view full image">
-                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                    </a>
-
-                    <div class="p-8 flex flex-col justify-between flex-grow space-y-6">
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between text-xs font-mono text-sky-400">
-                                <span>PROJECT 0${idx + 1}</span>
-                                <span class="w-2 h-2 rounded-full bg-sky-400/50 group-hover:bg-sky-400 transition-colors"></span>
-                            </div>
-                            <h3 class="text-2xl font-bold text-slate-100 group-hover:text-sky-400 transition-colors">${project.title}</h3>
-                            <p class="text-slate-300 text-sm leading-relaxed">${project.description}</p>
-                        </div>
-                        <div class="space-y-6">
-                            <div class="flex flex-wrap gap-2">
-                                ${project.tags.map(tag => `<span class="px-3 py-1 rounded-md bg-slate-800/80 text-xs font-medium text-slate-300">${tag}</span>`).join('')}
-                            </div>
-                            <div class="flex items-center gap-6 pt-4 border-t border-slate-800/60 text-sm font-semibold">
-                                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-200 hover:text-sky-400 transition-colors">
-                                    <i data-lucide="github" class="w-4 h-4"></i> GitHub Repo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderProjects();
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        });
-    </script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
